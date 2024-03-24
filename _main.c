@@ -5,52 +5,36 @@
 #include <time.h>
 
 
-int getbingo(char board[9], int lines[8][3]) {
-  for (int i = 0; i < 8; i++) {
-    int a = lines[i][0];
-    int b = lines[i][1];
-    int c = lines[i][2];
-
-    if (
-      board[a] != ' '
-      && board[a] == board[b] 
-      && board[b] == board[c]
-    ) {
-      return board[a];
-    };
+void chktarget(char board[9], int* target, int a, int b, int c) {
+  if (
+    board[b] != ' '
+    && board[b] == board[c]
+    && board[a] == ' '
+  ) {
+    *target = a;
+  } else if (
+    board[a] != ' '
+    && board[a] == board[c]
+    && board[b] == ' '
+  ) {
+    *target = b;
+  } else if (
+    board[a] != ' '
+    && board[a] == board[b]
+    && board[c] == ' '
+  ) {
+    *target = c;
   }
-
-  return 0;
 }
 
-int get_target(char board[9], int lines[8][3]) {
-  for (int i = 0; i < 8; i++) {
-    int a = lines[i][0];
-    int b = lines[i][1];
-    int c = lines[i][2];
-
-    if (
-      board[b] != ' '
-      && board[b] == board[c]
-      && board[a] == ' '
-    ) {
-      return a;
-    } else if (
-      board[a] != ' '
-      && board[a] == board[c]
-      && board[b] == ' '
-    ) {
-      return b;
-    } else if (
-      board[a] != ' '
-      && board[a] == board[b]
-      && board[c] == ' '
-    ) {
-      return c;
-    }
+void chkbingo(char board[9], int* bingo, int a, int b, int c) {
+  if (
+    board[a] != ' '
+    && board[a] == board[b] 
+    && board[b] == board[c]
+  ) {
+    *bingo = board[a];
   }
-
-  return -1;
 }
 
 void drawboard(char board[9]) {
@@ -67,16 +51,6 @@ void game() {
   // constants
   enum Player { USER = 1, COM };
   enum Symbol { O = 'O', X = 'X' };
-  int lines[8][3] = {
-    {0, 1, 2},
-    {3, 4, 5},
-    {6, 7, 8},
-    {0, 3, 6},
-    {1, 4, 7},
-    {2, 5, 8},
-    {0, 4, 8},
-    {2, 4, 6},
-  };
 
   // variables
   char board[9];
@@ -126,11 +100,21 @@ void game() {
     
     // com
     if (turn == COM) {
-      int target = get_target(board, lines);
+      int target = -1;
       int com_idx;
+
+      chktarget(board, &target, 0, 1, 2);
+      chktarget(board, &target, 3, 4, 5);
+      chktarget(board, &target, 6, 7, 8);
+      chktarget(board, &target, 0, 3, 6);
+      chktarget(board, &target, 1, 4, 7);
+      chktarget(board, &target, 2, 5, 8);
+      chktarget(board, &target, 0, 4, 8);
+      chktarget(board, &target, 2, 4, 6);
 
       if (target > -1) {
         board[target] = X;
+        target = -1;
       } else {
         while (1) { 
           com_idx = rand() % 9;
@@ -143,11 +127,20 @@ void game() {
       }
 
       count++;
-    };
+    }
 
     // check bingo
     {
-      int bingo = getbingo(board, lines);
+      int bingo;
+
+      chkbingo(board, &bingo, 0, 1, 2);
+      chkbingo(board, &bingo, 3, 4, 5);
+      chkbingo(board, &bingo, 6, 7, 8);
+      chkbingo(board, &bingo, 0, 3, 6);
+      chkbingo(board, &bingo, 1, 4, 7);
+      chkbingo(board, &bingo, 2, 5, 8);
+      chkbingo(board, &bingo, 0, 4, 8);
+      chkbingo(board, &bingo, 2, 4, 6);
 
       if (bingo == O) {
         winner = USER;
