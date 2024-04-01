@@ -102,7 +102,6 @@ void game() {
 
         if (board[x][y] == ' ') {
           board[x][y] = 'O';
-          count++;
           break;
         } else {
           printf("▶︎ Occupied. try again\n");
@@ -122,12 +121,11 @@ void game() {
           break;
         } 
       }
-
-      count++;
     }
-    
+
     // check result
     bingo = getbingo(board);
+    count++;
 
     if (bingo) {
       drawboard(board);
