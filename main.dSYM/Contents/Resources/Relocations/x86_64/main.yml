@@ -2,10 +2,9 @@
 triple:          'x86_64-apple-darwin'
 binary-path:     '/Users/jintaemin/workspace/cli-tic-tac-toe/main'
 relocations:
-  - { offsetInCU: 0x26, offset: 0x26, size: 0x8, addend: 0x0, symName: _getbingo, symObjAddr: 0x0, symBinAddr: 0x1000006E0, symSize: 0xF0 }
-  - { offsetInCU: 0x41, offset: 0x41, size: 0x8, addend: 0x0, symName: _game, symObjAddr: 0x340, symBinAddr: 0x100000A20, symSize: 0x370 }
-  - { offsetInCU: 0x17C, offset: 0x17C, size: 0x8, addend: 0x0, symName: _getbingo, symObjAddr: 0x0, symBinAddr: 0x1000006E0, symSize: 0xF0 }
-  - { offsetInCU: 0x206, offset: 0x206, size: 0x8, addend: 0x0, symName: _get_target, symObjAddr: 0xF0, symBinAddr: 0x1000007D0, symSize: 0x190 }
-  - { offsetInCU: 0x290, offset: 0x290, size: 0x8, addend: 0x0, symName: _drawboard, symObjAddr: 0x280, symBinAddr: 0x100000960, symSize: 0xC0 }
-  - { offsetInCU: 0x2B4, offset: 0x2B4, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x6B0, symBinAddr: 0x100000D90, symSize: 0x53 }
+  - { offsetInCU: 0x26, offset: 0x26, size: 0x8, addend: 0x0, symName: _getbingo, symObjAddr: 0x0, symBinAddr: 0x100000990, symSize: 0x200 }
+  - { offsetInCU: 0x4D, offset: 0x4D, size: 0x8, addend: 0x0, symName: _game, symObjAddr: 0x2A0, symBinAddr: 0x100000C30, symSize: 0x2B0 }
+  - { offsetInCU: 0x18E, offset: 0x18E, size: 0x8, addend: 0x0, symName: _getbingo, symObjAddr: 0x0, symBinAddr: 0x100000990, symSize: 0x200 }
+  - { offsetInCU: 0x1EE, offset: 0x1EE, size: 0x8, addend: 0x0, symName: _drawboard, symObjAddr: 0x200, symBinAddr: 0x100000B90, symSize: 0xA0 }
+  - { offsetInCU: 0x24A, offset: 0x24A, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x550, symBinAddr: 0x100000EE0, symSize: 0xD }
 ...
