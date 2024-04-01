@@ -68,12 +68,10 @@ void game() {
 
   // constants
   enum Player { USER = 1, COM };
-
   // variables
   enum Player turn;
-  int winner;
   int count = 0;
-  int bingo;
+  int bingo = 0;
   char board[3][3];
 
   for (int r = 0; r < 3; r++) {
@@ -87,7 +85,7 @@ void game() {
   printf("%s First\n", turn == USER ? "You" : "Com");
 
   // playing
-  while (1) {
+  while (!bingo && count < 9) {
     if (turn == USER) {
       int input;
 
@@ -123,33 +121,28 @@ void game() {
       }
     }
 
-    // check result
+    turn = (turn == USER) ? COM : USER;
+    
     bingo = getbingo(board);
     count++;
+  }
 
-    if (bingo) {
-      drawboard(board);
+  // get result
+  drawboard(board);
 
-      if (bingo == 'O') {
-        printf("▶︎ YOU WIN!\n");
-      } else {
-        printf("▶︎ YOU LOSE\n");
-      }
-
-      break;
-    } else if (count > 8) {
-      drawboard(board);
-
-      printf("▶︎ DRAW\n");
-      break;
-    } else {
-      turn = (turn == USER) ? COM : USER;
-    }
+  if (bingo == 'O') {
+    printf("▶︎ YOU WIN!\n");
+  } else if (bingo == 'X') {
+    printf("▶︎ YOU LOSE\n");
+  } else {
+    printf("▶︎ DRAW\n");
   }
 }
 
 int main() {
   game();
 }
+
+
 
 
