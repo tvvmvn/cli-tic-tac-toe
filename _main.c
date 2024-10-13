@@ -48,7 +48,7 @@ int getBingo(char board[3][3]) {
   return 0;
 }
 
-void drawBoard(char board[3][3]) {
+void drawboard(char board[3][3]) {
   printf("-----\n");
 
   for (int r = 0; r < 3; r++) {
@@ -86,40 +86,48 @@ int main() {
   // playing
   while (!bingo && count < 9) {
     if (turn == USER) {
-      drawBoard(board);
-
       int input;
-      printf("▶︎ Choose a number from 1 to 9: ");
-      scanf("%d", &input);
 
-      int x = (input - 1) / 3;
-      int y = (input - 1) % 3;
+      while (1) { 
+        drawboard(board);
+        
+        printf("▶︎ Choose a number from 1 to 9: ");
+        scanf("%d", &input);
 
-      if (board[x][y] == ' ') {
-        board[x][y] = 'O';
-      } else {
-        printf("▶︎ Occupied. try again\n");
-        continue;
+        int x = (input - 1) / 3;
+        int y = (input - 1) % 3;
+
+        if (board[x][y] == ' ') {
+          board[x][y] = 'O';
+          break;
+        } else {
+          printf("▶︎ Occupied. try again\n");
+        }
       }
     } else {
-      int com_idx = rand() % 9;
-      int x = com_idx / 3;
-      int y = com_idx % 3;
+      int com_idx = 0;
+      
+      while (1) { 
+        com_idx = rand() % 9;
 
-      if (board[x][y] != ' ') {
-        continue;
-      } 
+        int x = com_idx / 3;
+        int y = com_idx % 3;
 
-      board[x][y] = 'X';
+        if (board[x][y] == ' ') {
+          board[x][y] = 'X';
+          break;
+        } 
+      }
     }
 
     turn = (turn == USER) ? COM : USER;
+    
     bingo = getBingo(board);
     count++;
   }
 
   // get result
-  drawBoard(board);
+  drawboard(board);
 
   if (bingo == 'O') {
     printf("▶︎ YOU WIN!\n");
