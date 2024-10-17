@@ -2,8 +2,12 @@
 triple:          'x86_64-apple-darwin'
 binary-path:     '/Users/jintaemin/workspace/cli-tic-tac-toe/main'
 relocations:
-  - { offset: 0x26, size: 0x8, addend: 0x0, symName: _getBingo, symObjAddr: 0x0, symBinAddr: 0x100000990, symSize: 0x200 }
-  - { offset: 0x4D, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x2A0, symBinAddr: 0x100000C30, symSize: 0x2B9 }
-  - { offset: 0x168, size: 0x8, addend: 0x0, symName: _getBingo, symObjAddr: 0x0, symBinAddr: 0x100000990, symSize: 0x200 }
-  - { offset: 0x1C8, size: 0x8, addend: 0x0, symName: _drawBoard, symObjAddr: 0x200, symBinAddr: 0x100000B90, symSize: 0xA0 }
+  - { offset: 0x26, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x0, symBinAddr: 0x100000900, symSize: 0x2C0 }
+  - { offset: 0x4D, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x0, symBinAddr: 0x100000900, symSize: 0x2C0 }
+  - { offset: 0x139, size: 0x8, addend: 0x0, symName: _isCrossed, symObjAddr: 0x2C0, symBinAddr: 0x100000BC0, symSize: 0x60 }
+  - { offset: 0x161, size: 0x8, addend: 0x0, symName: _drawBoard, symObjAddr: 0x320, symBinAddr: 0x100000C20, symSize: 0xA0 }
+  - { offset: 0x1BD, size: 0x8, addend: 0x0, symName: _lot, symObjAddr: 0x3C0, symBinAddr: 0x100000CC0, symSize: 0x20 }
+  - { offset: 0x1D6, size: 0x8, addend: 0x0, symName: _rowCrossed, symObjAddr: 0x3E0, symBinAddr: 0x100000CE0, symSize: 0xC0 }
+  - { offset: 0x21A, size: 0x8, addend: 0x0, symName: _columnCrossed, symObjAddr: 0x4A0, symBinAddr: 0x100000DA0, symSize: 0xA0 }
+  - { offset: 0x25E, size: 0x8, addend: 0x0, symName: _diagonalCrossed, symObjAddr: 0x540, symBinAddr: 0x100000E40, symSize: 0xAC }
 ...
